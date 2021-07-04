@@ -8,12 +8,16 @@ namespace WillisTowersWatson
 {
     class InsurancePolicy
     {
-        private String _Name { get; set; }
-        private List<Claims> _Claims { get; }
-
+        public String PolicyName { get; set; }
+        public List<Claim> Claims { get; set; }
+        public InsurancePolicy(String policyName)
+        {
+            this.Claims = new List<Claim>();
+            this.PolicyName = policyName;
+        }
         public void createClaim(int origin, int year, float payment)
         {
-            _Claims.Add(new Claims(origin, year, payment));
+            this.Claims.Add(new Claim(origin, year, payment));
         }
     }
 }

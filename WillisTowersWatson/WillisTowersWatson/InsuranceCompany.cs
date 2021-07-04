@@ -10,6 +10,9 @@ namespace WillisTowersWatson
     class InsuranceCompany
     {
         public String CompanyName { get; set; }
+
+        private Dictionary<string, InsurancePolicy> policies = new Dictionary<string, InsurancePolicy>();
+
         public List<InsurancePolicy> Policies { get; }
 
         public InsuranceCompany(String name)
@@ -17,42 +20,79 @@ namespace WillisTowersWatson
             this.CompanyName = name;
         }
 
-        public void readTxtFile(String fileName)
+
+        //Read and write functions can be moved to its own class
+        public List<String> readTxtFile(String fileName)
         {
+            List<String> txt = new List<string>();
+            String workingDirectory = Environment.CurrentDirectory;
+            String path = Directory.GetParent(workingDirectory).Parent.FullName + "./" + fileName;
+
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                String workingDirectory = Environment.CurrentDirectory;
-                String path = Directory.GetParent(workingDirectory).Parent.FullName + "./" + fileName;
-
                 StreamReader sr = new StreamReader(path);
                 //Read the first line of text
                 String line = sr.ReadLine();
+                line = sr.ReadLine();
                 //Continue to read until you reach end of file
                 while (line != null)
                 {
-                    Console.WriteLine(line);
-                    //Read the next line
+                    txt.Add(line);
                     line = sr.ReadLine();
                 }
                 //close the file
                 sr.Close();
-                Console.ReadLine();
             }
             catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
 
-            Console.ReadLine();
+            return txt;
         }
 
-
-        public void calculateAccumulatedPayments()
+        public void writeToFile()
         {
 
         }
 
+        public void convertToPolicy(List<String> txt)
+        {
+            foreach (String line in txt)
+            {
+                var lineSplit = line.Split(',');
 
+                String policy = lineSplit[0];
+                if (!policies.ContainsKey(policy))
+                {
+                    policies.Add(policy, new InsurancePolicy(policy));
+                }
+
+                int origin = int.Parse(lineSplit[1]);
+                int year = int.Parse(lineSplit[2]);
+                float payment = float.Parse(lineSplit[3]);
+
+                //Console.WriteLine(origin.ToString() + "-" + year.ToString() + "-" + payment.ToString());
+                policies[policy].createClaim(origin,year,payment);
+            }
+        }
+
+        public void calculateAccumulatedPayments()
+        {
+            //Get lowest year
+            //get max diff
+
+            //retrieve the imcremented values
+            foreach (KeyValuePair<string, InsurancePolicy> policy in policies)
+            {
+                float value = 0;
+                foreach (Claim claim in policy.Value.Claims)
+                {
+                    value += claim.Payment;
+                }
+                Console.WriteLine(policy.Key + " " + value);
+            }
+        }
     }
 }
