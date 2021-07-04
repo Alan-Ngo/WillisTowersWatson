@@ -1253,6 +1253,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "WillisTowersWatson/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/WillisTowersWatson.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WillisTowersWatson.dll": {}
+        }
       }
     }
   },
@@ -4942,6 +4951,11 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "WillisTowersWatson/1.0.0": {
+      "type": "project",
+      "path": "../WillisTowersWatson/WillisTowersWatson.csproj",
+      "msbuildProject": "../WillisTowersWatson/WillisTowersWatson.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4949,6 +4963,7 @@
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "NUnit >= 3.13.1",
       "NUnit3TestAdapter >= 3.17.0",
+      "WillisTowersWatson >= 1.0.0",
       "coverlet.collector >= 3.0.2"
     ]
   },
@@ -4978,7 +4993,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj": {
+              "projectPath": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

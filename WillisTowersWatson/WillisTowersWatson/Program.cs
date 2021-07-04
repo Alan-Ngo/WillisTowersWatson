@@ -10,6 +10,11 @@ namespace WillisTowersWatson
     {
         static void Main(string[] args)
         {
+            String companyName = "WillisTowersWatson";
+            InsuranceCompany WillisTowersWatson = new InsuranceCompany(companyName);
+
+            String fileName = "claims.txt";
+            WillisTowersWatson.readTxtFile(fileName);
         }
     }
 }

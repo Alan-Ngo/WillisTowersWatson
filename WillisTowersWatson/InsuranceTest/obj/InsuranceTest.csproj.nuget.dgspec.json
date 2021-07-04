@@ -27,7 +27,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj": {
+                "projectPath": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -74,6 +78,16 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj",
+        "projectName": "WillisTowersWatson",
+        "projectPath": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }
