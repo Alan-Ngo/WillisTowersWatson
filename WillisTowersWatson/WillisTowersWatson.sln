@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillisTowersWatson", "WillisTowersWatson\WillisTowersWatson.csproj", "{CE16D470-2D9C-49B8-8F1A-70C7239C3C0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuranceTest", "InsuranceTest\InsuranceTest.csproj", "{A193ED04-A78C-473B-B640-1E2BA12DBE76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CE16D470-2D9C-49B8-8F1A-70C7239C3C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE16D470-2D9C-49B8-8F1A-70C7239C3C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE16D470-2D9C-49B8-8F1A-70C7239C3C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A193ED04-A78C-473B-B640-1E2BA12DBE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A193ED04-A78C-473B-B640-1E2BA12DBE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A193ED04-A78C-473B-B640-1E2BA12DBE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A193ED04-A78C-473B-B640-1E2BA12DBE76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
