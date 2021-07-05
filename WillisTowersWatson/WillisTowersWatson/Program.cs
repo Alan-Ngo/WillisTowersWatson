@@ -14,10 +14,8 @@ namespace WillisTowersWatson
             InsuranceCompany WillisTowersWatson = new InsuranceCompany(companyName);
 
             String fileName = "claims.txt";
-            List<String> txt = WillisTowersWatson.readTxtFile(fileName);
+            WillisTowersWatson.outputAccumulatedPayments(fileName);
 
-            WillisTowersWatson.convertToPolicy(txt);
-            WillisTowersWatson.calculateAccumulatedPayments();
             Console.ReadLine();
         }
     }

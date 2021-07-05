@@ -11,18 +11,50 @@ namespace WillisTowersWatson
     {
         public String CompanyName { get; set; }
 
-        private Dictionary<string, InsurancePolicy> policies = new Dictionary<string, InsurancePolicy>();
-
-        public List<InsurancePolicy> Policies { get; }
+        public Dictionary<string, InsurancePolicy> Policies { get; set; }
 
         public InsuranceCompany(String name)
         {
+            this.Policies = new Dictionary<string, InsurancePolicy>();
             this.CompanyName = name;
         }
 
+        public void outputAccumulatedPayments(String fileName)
+        {
+            List<String> txt = this.readTxtFile(fileName);
+            this.convertToPolicy(txt);
+
+            String output = "";
+
+            int lowYeaer = this.getLowestYear(Policies);
+            int claimsRange = this.getYearRange(Policies);
+            output += lowYeaer + ", " + claimsRange;
+            Console.WriteLine(output);
+            //this.calculateAccumulatedPayments();
+        }
+
+        private void convertToPolicy(List<String> txt)
+        {
+            foreach (String line in txt)
+            {
+                var lineSplit = line.Split(',');
+
+                String policy = lineSplit[0];
+                if (!Policies.ContainsKey(policy))
+                {
+                    Policies.Add(policy, new InsurancePolicy(policy));
+                }
+
+                int origin = int.Parse(lineSplit[1]);
+                int year = int.Parse(lineSplit[2]);
+                float payment = float.Parse(lineSplit[3]);
+
+                Policies[policy].createClaim(origin, year, payment);
+            }
+        }
 
         //Read and write functions can be moved to its own class
-        public List<String> readTxtFile(String fileName)
+        private List<String> readTxtFile(String fileName)
         {
             List<String> txt = new List<string>();
             String workingDirectory = Environment.CurrentDirectory;
@@ -52,47 +84,85 @@ namespace WillisTowersWatson
             return txt;
         }
 
-        public void writeToFile()
+        private void writeToFile()
         {
 
         }
 
-        public void convertToPolicy(List<String> txt)
+        private Dictionary<String, String> calculateAccumulatedPayments()
         {
-            foreach (String line in txt)
+            Dictionary<String, String> dReturn = new Dictionary<String,String>();
+
+            foreach (KeyValuePair<string, InsurancePolicy> policy in Policies)
             {
-                var lineSplit = line.Split(',');
+                //Sort the claims
+                policy.Value.Claims.OrderBy(a => a.OriginYear).ThenBy(a => a.DevelopmentYear);
 
-                String policy = lineSplit[0];
-                if (!policies.ContainsKey(policy))
-                {
-                    policies.Add(policy, new InsurancePolicy(policy));
-                }
-
-                int origin = int.Parse(lineSplit[1]);
-                int year = int.Parse(lineSplit[2]);
-                float payment = float.Parse(lineSplit[3]);
-
-                //Console.WriteLine(origin.ToString() + "-" + year.ToString() + "-" + payment.ToString());
-                policies[policy].createClaim(origin,year,payment);
-            }
-        }
-
-        public void calculateAccumulatedPayments()
-        {
-            //Get lowest year
-            //get max diff
-
-            //retrieve the imcremented values
-            foreach (KeyValuePair<string, InsurancePolicy> policy in policies)
-            {
+                //Set up variables
                 float value = 0;
+                int year = policy.Value.Claims[0].OriginYear;
+                int devYear = year;
+                String outStr = "";
+
                 foreach (Claim claim in policy.Value.Claims)
                 {
+                    if (claim.OriginYear != year)
+                    {
+                        value = 0;
+                        year = claim.OriginYear;
+                        devYear = year;
+                    }
+                    
+                    //Loop until it reaches second to last dev year
+                    int devDiff = (claim.DevelopmentYear - devYear) - 2;
+                    for (int i = 0; i < devDiff; i++)
+                    {
+                        devYear += 1;
+                        outStr += value + ",";
+                    }
+
                     value += claim.Payment;
+                    outStr += value + ",";
                 }
-                Console.WriteLine(policy.Key + " " + value);
+                dReturn[policy.Key] = outStr;
+                Console.WriteLine(policy.Key + " " + outStr);
             }
+            return dReturn;
+        }
+
+        private int getLowestYear(Dictionary<string, InsurancePolicy> Policies)
+        {
+            int lowestYear = int.MaxValue;
+            foreach (KeyValuePair<string, InsurancePolicy> policy in Policies)
+            {
+                foreach (Claim claim in policy.Value.Claims)
+                {
+                    //Get lowest year
+                    if (claim.OriginYear < lowestYear)
+                    {
+                        lowestYear = claim.OriginYear;
+                    }
+                }
+            }
+            return lowestYear;
+        }
+
+        private int getYearRange(Dictionary<string, InsurancePolicy> Policies)
+        {
+            int rangeYear = 0;
+            foreach (KeyValuePair<string, InsurancePolicy> policy in Policies)
+            {
+                foreach (Claim claim in policy.Value.Claims)
+                {
+                    //Get max diff between development year and origin
+                    int diff = (claim.DevelopmentYear - claim.OriginYear) + 1;
+                    if (diff > rangeYear)
+                    {
+                        rangeYear = diff;
+                    }
+                }
+            }
+            return rangeYear;
         }
     }
 }
