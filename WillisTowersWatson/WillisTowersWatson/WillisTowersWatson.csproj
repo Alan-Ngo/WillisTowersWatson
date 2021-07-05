@@ -46,6 +46,8 @@
     <Compile Include="Claim.cs" />
     <Compile Include="InsuranceCompany.cs" />
     <Compile Include="InsurancePolicy.cs" />
+    <Compile Include="IOFile.cs" />
+    <Compile Include="IPolicy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

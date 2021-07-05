@@ -25,7 +25,7 @@ namespace WillisTowersWatson
             String path = Directory.GetParent(workingDirectory).Parent.FullName + "./" + fileName;
             String outPath = Directory.GetParent(workingDirectory).Parent.FullName + "./" + outFileName;
 
-            List<String> txt = this.readTxtFile(path);
+            List<String> txt = IOFile.readTxtFile(path);
             this.convertToPolicy(txt);
 
             String output = "";
@@ -43,7 +43,7 @@ namespace WillisTowersWatson
             }
             
             Console.WriteLine(output);
-            writeToFile(output, outPath);
+            IOFile.writeToFile(output, outPath);
         }
 
         private void convertToPolicy(List<String> txt)
@@ -66,48 +66,7 @@ namespace WillisTowersWatson
             }
         }
 
-        //Read and write txt functions should be moved to its own class
-        private List<String> readTxtFile(String path)
-        {
-            List<String> txt = new List<string>();
 
-            try
-            {
-                //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader(path);
-                //Read the first line of text
-                String line = sr.ReadLine();
-                line = sr.ReadLine();
-                //Continue to read until you reach end of file
-                while (line != null)
-                {
-                    txt.Add(line);
-                    line = sr.ReadLine();
-                }
-                //Close the file
-                sr.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-
-            return txt;
-        }
-
-        private void writeToFile(String txt, String path)
-        {
-            try
-            {
-                StreamWriter sw = new StreamWriter(path);
-                sw.Write(txt);
-                sw.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
-        }
 
         private Dictionary<String, String> calculateAccumulatedPayments()
         {

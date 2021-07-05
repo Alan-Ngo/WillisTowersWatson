@@ -84,12 +84,7 @@
       "restore": {
         "projectUniqueName": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj",
         "projectName": "WillisTowersWatson",
-        "projectPath": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj",
-        "frameworks": {
-          "net472": {
-            "projectReferences": {}
-          }
-        }
+        "projectPath": "C:\\Users\\alann\\Documents\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson\\WillisTowersWatson.csproj"
       },
       "frameworks": {
         "net472": {}
