@@ -33,18 +33,126 @@
           }
         },
         {
-          "ruleId": "S1186",
+          "ruleId": "S1854",
           "level": "warning",
-          "message": "Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.",
+          "message": "Remove this useless assignment to local variable 'line'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/Program.cs",
+                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/InsuranceCompany.cs",
                 "region": {
-                  "startLine": 11,
+                  "startLine": 79,
+                  "startColumn": 29,
+                  "endLine": 79,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1172",
+          "level": "warning",
+          "message": "Remove this unused method parameter 'fileName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/InsuranceCompany.cs",
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 42,
+                  "endLine": 70,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "IsRemovable": "True"
+            }
+          }
+        },
+        {
+          "ruleId": "S1643",
+          "level": "warning",
+          "message": "Use a StringBuilder instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/InsuranceCompany.cs",
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 17,
+                  "endLine": 42,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2201",
+          "level": "warning",
+          "message": "Use the return value of method 'ThenBy'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/InsuranceCompany.cs",
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 17,
+                  "endLine": 120,
+                  "endColumn": 94
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1643",
+          "level": "warning",
+          "message": "Use a StringBuilder instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/InsuranceCompany.cs",
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 25,
+                  "endLine": 142,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1643",
+          "level": "warning",
+          "message": "Use a StringBuilder instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/alann/Documents/WillisTowersWatson/WillisTowersWatson/WillisTowersWatson/InsuranceCompany.cs",
+                "region": {
+                  "startLine": 146,
                   "startColumn": 21,
-                  "endLine": 11,
-                  "endColumn": 25
+                  "endLine": 146,
+                  "endColumn": 42
                 }
               }
             }
@@ -72,20 +180,69 @@
             ]
           }
         },
-        "S1186": {
-          "id": "S1186",
-          "shortDescription": "Methods should not be empty",
-          "fullDescription": "There are several reasons for a method not to have a method body:",
+        "S1172": {
+          "id": "S1172",
+          "shortDescription": "Unused method parameters should be removed",
+          "fullDescription": "Unused parameters are misleading. Whatever the values passed to such parameters, the behavior will be the same.",
           "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1186",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1172",
           "properties": {
-            "category": "Critical Code Smell",
+            "category": "Major Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
               "SonarWay",
               "MainSourceScope",
               "TestSourceScope"
+            ]
+          }
+        },
+        "S1643": {
+          "id": "S1643",
+          "shortDescription": "Strings should not be concatenated using '+' in a loop",
+          "fullDescription": "StringBuilder is more efficient than string concatenation, especially when the operator is repeated over and over as in loops.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1643",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope"
+            ]
+          }
+        },
+        "S1854": {
+          "id": "S1854",
+          "shortDescription": "Unused assignments should be removed",
+          "fullDescription": "A dead store happens when a local variable is assigned a value that is not read by any subsequent instruction. Calculating or retrieving a value only to then overwrite it or throw it away, could indicate a serious error in the code. Even if it's not an error, it is at best a waste of resources. Therefore all calculated values should be used.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S2201": {
+          "id": "S2201",
+          "shortDescription": "Return values from functions without side effects should not be ignored",
+          "fullDescription": "When the call to a function doesn't have any side effects, what is the point of making the call if the results are ignored? In such case, either the function call is useless and should be dropped or the source code doesn't behave as expected.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2201",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope"
             ]
           }
         }

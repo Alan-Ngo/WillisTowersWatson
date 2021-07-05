@@ -25,7 +25,7 @@ namespace WillisTowersWatson
             String path = Directory.GetParent(workingDirectory).Parent.FullName + "./" + fileName;
             String outPath = Directory.GetParent(workingDirectory).Parent.FullName + "./" + outFileName;
 
-            List<String> txt = this.readTxtFile(fileName,path);
+            List<String> txt = this.readTxtFile(path);
             this.convertToPolicy(txt);
 
             String output = "";
@@ -67,7 +67,7 @@ namespace WillisTowersWatson
         }
 
         //Read and write txt functions should be moved to its own class
-        private List<String> readTxtFile(String fileName, String path)
+        private List<String> readTxtFile(String path)
         {
             List<String> txt = new List<string>();
 
@@ -107,7 +107,6 @@ namespace WillisTowersWatson
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
-
         }
 
         private Dictionary<String, String> calculateAccumulatedPayments()
@@ -139,6 +138,7 @@ namespace WillisTowersWatson
                     for (int i = 0; i < devDiff; i++)
                     {
                         devYear += 1;
+                        //String builder can be used
                         outStr += value + ",";
                     }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WillisTowersWatson
 {
-    class InsurancePolicy
+    class InsurancePolicy:IPolicy
     {
         public String PolicyName { get; set; }
         public List<Claim> Claims { get; set; }

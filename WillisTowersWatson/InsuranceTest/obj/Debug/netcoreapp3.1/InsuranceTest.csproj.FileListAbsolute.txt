@@ -96,3 +96,6 @@ C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\obj
 C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\obj\Debug\netcoreapp3.1\InsuranceTest.dll
 C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\obj\Debug\netcoreapp3.1\InsuranceTest.pdb
 C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\obj\Debug\netcoreapp3.1\InsuranceTest.genruntimeconfig.cache
+C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\bin\Debug\netcoreapp3.1\WillisTowersWatson.exe
+C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\bin\Debug\netcoreapp3.1\WillisTowersWatson.pdb
+C:\Users\alann\Documents\WillisTowersWatson\WillisTowersWatson\InsuranceTest\bin\Debug\netcoreapp3.1\WillisTowersWatson.exe.config
