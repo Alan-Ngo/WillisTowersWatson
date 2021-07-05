@@ -19,9 +19,13 @@ namespace WillisTowersWatson
             this.CompanyName = name;
         }
 
-        public void outputAccumulatedPayments(String fileName)
+        public void outputAccumulatedPayments(String fileName, String outFileName)
         {
-            List<String> txt = this.readTxtFile(fileName);
+            String workingDirectory = Environment.CurrentDirectory;
+            String path = Directory.GetParent(workingDirectory).Parent.FullName + "./" + fileName;
+            String outPath = Directory.GetParent(workingDirectory).Parent.FullName + "./" + outFileName;
+
+            List<String> txt = this.readTxtFile(fileName,path);
             this.convertToPolicy(txt);
 
             String output = "";
@@ -39,6 +43,7 @@ namespace WillisTowersWatson
             }
             
             Console.WriteLine(output);
+            writeToFile(output, outPath);
         }
 
         private void convertToPolicy(List<String> txt)
@@ -61,12 +66,10 @@ namespace WillisTowersWatson
             }
         }
 
-        //Read and write txt functions can be moved to its own class
-        private List<String> readTxtFile(String fileName)
+        //Read and write txt functions should be moved to its own class
+        private List<String> readTxtFile(String fileName, String path)
         {
             List<String> txt = new List<string>();
-            String workingDirectory = Environment.CurrentDirectory;
-            String path = Directory.GetParent(workingDirectory).Parent.FullName + "./" + fileName;
 
             try
             {
@@ -92,8 +95,18 @@ namespace WillisTowersWatson
             return txt;
         }
 
-        private void writeToFile()
+        private void writeToFile(String txt, String path)
         {
+            try
+            {
+                StreamWriter sw = new StreamWriter(path);
+                sw.Write(txt);
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
 
         }
 

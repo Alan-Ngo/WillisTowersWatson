@@ -14,7 +14,8 @@ namespace WillisTowersWatson
             InsuranceCompany WillisTowersWatson = new InsuranceCompany(companyName);
 
             String fileName = "claims.txt";
-            WillisTowersWatson.outputAccumulatedPayments(fileName);
+            String outFileName = "claimsAcc.txt";
+            WillisTowersWatson.outputAccumulatedPayments(fileName,outFileName);
 
             Console.ReadLine();
         }
