@@ -11,7 +11,7 @@ namespace WillisTowersWatson
     {
         public String CompanyName { get; set; }
 
-        public Dictionary<string, InsurancePolicy> Policies { get; set; }
+        public Dictionary<String, InsurancePolicy> Policies { get; set; }
 
         public InsuranceCompany(String name)
         {
@@ -26,11 +26,19 @@ namespace WillisTowersWatson
 
             String output = "";
 
+            //Make first row
             int lowYeaer = this.getLowestYear(Policies);
             int claimsRange = this.getYearRange(Policies);
-            output += lowYeaer + ", " + claimsRange;
+            output += lowYeaer + ", " + claimsRange + "\n";
+
+            //Add data
+            Dictionary <String, String> accumulatedData = this.calculateAccumulatedPayments();
+            foreach (KeyValuePair<String, String> policy in accumulatedData)
+            {
+                output += policy.Key + "," + policy.Value + "\n";
+            }
+            
             Console.WriteLine(output);
-            //this.calculateAccumulatedPayments();
         }
 
         private void convertToPolicy(List<String> txt)
@@ -53,7 +61,7 @@ namespace WillisTowersWatson
             }
         }
 
-        //Read and write functions can be moved to its own class
+        //Read and write txt functions can be moved to its own class
         private List<String> readTxtFile(String fileName)
         {
             List<String> txt = new List<string>();
@@ -73,7 +81,7 @@ namespace WillisTowersWatson
                     txt.Add(line);
                     line = sr.ReadLine();
                 }
-                //close the file
+                //Close the file
                 sr.Close();
             }
             catch (Exception e)
@@ -125,7 +133,6 @@ namespace WillisTowersWatson
                     outStr += value + ",";
                 }
                 dReturn[policy.Key] = outStr;
-                Console.WriteLine(policy.Key + " " + outStr);
             }
             return dReturn;
         }
